@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     passwordHash: passwordHash
                 };
 
-                const response = await fetch("https://script.google.com/macros/s/AKfycbzNyIpi1rexxA-K6IHg1uKMknAZlVRtssjqW1Vin2pPpgpBCd2KOl3YIby38I8Y3glIFw/exec    ", {
+                const response = await fetch("https://script.google.com/macros/s/AKfycbwMDyXZPfnwGn9GQMe0A5GlYX5fmOsNZpgTm0e-HZyQUXx2CQt0oOWd1JeMmhBSTMGzTA/exec", {
                     method: 'POST',
                     body: JSON.stringify(payload)
                 });

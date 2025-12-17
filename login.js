@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const passwordHash = await hashPassword(password.value);
 
             const response = await fetch(
-                "https://script.google.com/macros/s/AKfycbwJYhi9OePlDMM7V8snq-1dUukoxr1F6_kVCeeOr4tYy1uMJi4Pb1I2r30u591cpR6q8Q/exec",
+                "https://script.google.com/macros/s/AKfycbwMDyXZPfnwGn9GQMe0A5GlYX5fmOsNZpgTm0e-HZyQUXx2CQt0oOWd1JeMmhBSTMGzTA/exec",
                 {
                     method: "POST",
                     body: JSON.stringify({
