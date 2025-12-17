@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">MyApp</div>
+        <ul class="nav-links">
+            <li><a href="#" id="homeLink">Home</a></li>
+            <li><a href="#" id="contactLink">Contact Us</a></li>
+            <li><a href="#" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <section id="homeSection" class="section">
+        <h1>Welcome to Dashboard</h1>
+        <p>You are successfully logged in.</p>
+    </section>
+
+    <!-- CONTACT US SECTION -->
+    <section id="contactSection" class="section hidden">
+        <h2>Contact Us</h2>
+
+        <form id="contactForm">
+            <input type="text" id="contactName" placeholder="Your Name">
+            <span class="error" id="nameError"></span>
+
+            <input type="email" id="contactEmail" placeholder="Your Email">
+            <span class="error" id="emailError"></span>
+
+            <textarea id="message" placeholder="Your Message"></textarea>
+            <span class="error" id="messageError"></span>
+
+            <button type="submit" id="contactBtn">Send</button>
+        </form>
+    </section>
+
+    <script src="home.js"></script>
+</body>
+</html>
