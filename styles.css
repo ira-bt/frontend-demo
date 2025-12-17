@@ -1,0 +1,61 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(209, 209, 243);
+}
+.container{
+    background-color: rgb(232, 232, 250);
+    width: 380px;
+    margin: 70px auto;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(32, 3, 3, 0.08);
+    border-radius: 10px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+    width: 100%;
+    margin-top: 7px;
+    padding: 10px;
+    border: 2px solid #e7bff8;
+    border-radius: 6px;
+}
+.checkbox{
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+    gap: 8px;
+}
+.checkbox input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
+}
+
+input.valid { border-color: green; }
+input.invalid { border-color: red; }
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+}
+button:disabled{
+    background-color:#f0f0f0;
+    color: #ccc;
+    cursor: not-allowed;
+}
+button:not(:disabled){
+    background-color: #e7bff8;
+    color: black;
+    cursor: pointer;
+}
+.error{
+    color: red;
+    font-size:small;
+}
