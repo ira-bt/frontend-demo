@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const homeSection = document.getElementById("homeSection");
     const contactSection = document.getElementById("contactSection");
 
+    const contactBtn = document.getElementById("contactBtn");
+
     homeLink.addEventListener("click", () => {
         homeSection.classList.remove("hidden");
         contactSection.classList.add("hidden");
@@ -65,9 +67,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!validateContactForm()) return;
 
+        contactBtn.disabled = true;
+        contactBtn.textContent = "Sending...";
+
         try {
             const response = await fetch(
-                "https://script.google.com/macros/s/AKfycbxmGT7OffRiZgfEtd0EpmpmkeYQqBMkIX5OnRf7WAj0-_yLlOG-xIvQeZ6Tx3p2pmfb3A/exec",
+                APP_CONFIG.API_BASE_URL,
                 {
                     method: "POST",
                     body: JSON.stringify({
@@ -91,6 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (err) {
             console.error(err);
             alert("Failed to send message");
+            contactBtn.disabled = false;
+            contactBtn.textContent = "Send";
         }
     });
 
