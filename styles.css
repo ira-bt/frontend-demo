@@ -2,8 +2,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "Segoe UI", Tahoma, sans-serif;
-
 }
 body{
     font-family: Arial, Helvetica, sans-serif;
@@ -11,8 +9,9 @@ body{
 }
 .container {
     background-color: rgb(232, 232, 250);
-    width: 380px;
-    margin: 70px auto;
+    width: 100%;
+    max-width: 380px;
+    margin: 60px auto;
     padding: 30px;
     box-shadow: 0 8px 25px rgba(32, 3, 3, 0.08);
     border-radius: 10px;
@@ -153,22 +152,45 @@ button {
     transition: background 0.3s;
 }
 
-button:hover {
+/* button:hover {
     background-color: #ae07c5;
-}
+} */
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .navbar {
         flex-direction: column;
-        gap: 10px;
+        padding: 12px 20px;
+        gap: 12px;
     }
 
     .nav-links {
-        gap: 15px;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
     }
-
     .section {
         margin: 20px;
         padding: 25px;
+    }
+    .section {
+        margin: 20px;
+        padding: 25px;
+    }
+
+    .section h1,
+    .section h2 {
+        font-size: 20px;
+    }
+
+    .section p {
+        font-size: 14px;
+    }
+}
+@media (max-width: 600px) {
+    input,
+    textarea,
+    button {
+        font-size: 16px;
+        padding: 12px;
     }
 }
