@@ -81,8 +81,26 @@ This project demonstrates a real-world **register → login → session → prot
 ## Apps Script File
 
 ```javascript
+const USER_HEADERS = [
+  "Full Name",
+  "Email",
+  "Password Hash",
+  "Created At"
+];
+
+const CONTACT_HEADERS = [
+  "Name",
+  "Email",
+  "Message",
+  "Created At"
+];
+
 function emailExists(sheet,email)
 {
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) {
+    return false;
+  }
    const emails = sheet.getRange(2, 2, sheet.getLastRow() - 1, 1)
                       .getValues()
                       .flat()
@@ -90,12 +108,43 @@ function emailExists(sheet,email)
 
   return emails.includes(email);
 }
+
+function getOrCreateSheet(ss, sheetName, headers) {
+  let sheet = ss.getSheetByName(sheetName);
+
+  // 1️⃣ Sheet does not exist → create it
+  if (!sheet) {
+    sheet = ss.insertSheet(sheetName);
+    sheet.appendRow(headers);
+    return sheet;
+  }
+
+  // 2️⃣ Sheet exists → validate headers
+  const firstRow = sheet.getRange(1, 1, 1, headers.length).getValues()[0];
+
+  const headersMissing = headers.some((header, index) => {
+    return firstRow[index] !== header;
+  });
+
+  if (headersMissing) {
+    // Insert headers safely without deleting data
+    sheet.insertRowBefore(1);
+    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+  }
+
+  return sheet;
+}
+
+
 function doPost(e) {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(5000);
+
   try {
     const data = JSON.parse(e.postData.contents);
 
     const ss = SpreadsheetApp.openById(
-      "1-P2kH6vVNk3Zr9U930JVgxXXqkpirDU8r8mRo_vylYQ"
+      "13gYiWckcCLD2H7_Kdl_ymyJBsiHI6Ov83e0R0NSWmZY"
     );
 
     
@@ -104,18 +153,18 @@ function doPost(e) {
 
     if(!data.action)
     {
-      const sheet = ss.getSheetByName("Users");
-      if (!sheet) {
-        throw new Error("Sheet 'Users' not found");
-      }
+      const userSheet = getOrCreateSheet(ss, "Users", USER_HEADERS);
+      
       const email = data.email.toLowerCase().trim();
-      if(emailExists(sheet,email))
+
+      if(emailExists(userSheet,email))
       {
         return ContentService
           .createTextOutput("EMAIL_ALREADY_EXISTS")
           .setMimeType(ContentService.MimeType.TEXT);
       }
-      sheet.appendRow([
+
+      userSheet.appendRow([
         data.fullName,
         email,
         data.passwordHash,
@@ -154,17 +203,15 @@ function doPost(e) {
     //contact us
     if(data.action === "CONTACT")
     {
-      const contactSheet = ss.getSheetByName("ContactUs");
-      if(!contactSheet)
-      {
-        throw new Error("ContactUs Sheet not found");
-      }
+      const contactSheet = getOrCreateSheet(ss, "ContactUs", CONTACT_HEADERS);
+     
       contactSheet.appendRow([
         data.name,
         data.email,
         data.message,
         new Date()
       ]);
+
       return ContentService.createTextOutput("CONTACT_SUCCESS");
     }
     return ContentService.createTextOutput("UNKNOWN_ACTION");
@@ -174,4 +221,8 @@ function doPost(e) {
       .createTextOutput("ERROR: " + err.message)
       .setMimeType(ContentService.MimeType.TEXT);
   }
+  finally{
+      lock.releaseLock();
+  }
 }
+
