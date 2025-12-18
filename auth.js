@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     passwordHash: passwordHash
                 };
 
-                const response = await fetch("https://script.google.com/macros/s/AKfycbwMDyXZPfnwGn9GQMe0A5GlYX5fmOsNZpgTm0e-HZyQUXx2CQt0oOWd1JeMmhBSTMGzTA/exec", {
+                const response = await fetch("https://script.google.com/macros/s/AKfycbxmGT7OffRiZgfEtd0EpmpmkeYQqBMkIX5OnRf7WAj0-_yLlOG-xIvQeZ6Tx3p2pmfb3A/exec", {
                     method: 'POST',
                     body: JSON.stringify(payload)
                 });
@@ -130,6 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert("Registration successful!");
                     window.location.href = "login.html";
                 } 
+                else if (text === "EMAIL_ALREADY_EXISTS") {
+                    alert("Email already registered. Please login.");
+                    registerForm.reset();
+                    document.getElementById("registerBtn").textContent = "Register";
+                }
                 else {
                     alert(text);
                 }
