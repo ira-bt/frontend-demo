@@ -11,27 +11,84 @@ document.addEventListener("DOMContentLoaded", () => {
     const contactLink = document.getElementById("contactLink");
     const logoutLink = document.getElementById("logoutLink");
 
-    const homeSection = document.getElementById("homeSection");
+    const heroSection = document.getElementById("heroSection");
     const contactSection = document.getElementById("contactSection");
 
     const contactBtn = document.getElementById("contactBtn");
     const userEmail = document.getElementById("userEmail");
 
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+
     userEmail.textContent = user;
-    homeLink.addEventListener("click", () => {
-        homeSection.classList.remove("hidden");
-        contactSection.classList.add("hidden");
+    // homeLink.addEventListener("click", () => {
+    //     heroSection.classList.remove("hidden");
+    //     contactSection.classList.add("hidden");
+    // });
+
+    // contactLink.addEventListener("click", () => {
+    //     contactSection.classList.remove("hidden");
+    //     heroSection.classList.add("hidden");
+    // });
+    
+    //SCROLL HELPERS
+    function scrollToSection(section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+    //NAV CLICK HANDLERS
+
+    function closeMobileMenu() {
+        navLinks.classList.remove("show");
+    }
+
+
+    homeLink.addEventListener('click', e => {
+        e.preventDefault();
+        scrollToSection(heroSection);
+        closeMobileMenu();
     });
 
-    contactLink.addEventListener("click", () => {
-        contactSection.classList.remove("hidden");
-        homeSection.classList.add("hidden");
+    contactLink.addEventListener('click', e => {
+        e.preventDefault();
+        scrollToSection(contactSection);
+        closeMobileMenu();
     });
+
 
     logoutLink.addEventListener("click", () => {
         sessionStorage.clear();
         window.location.href = "login.html";
     });
+
+    navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+    });
+
+    // ACTIVE LINK ON SCROLL
+    const sections = [
+        { section: heroSection, link: homeLink },
+        { section: contactSection, link: contactLink }
+    ];
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                sections.forEach(item => item.link.classList.remove("active"));
+                const activeItem = sections.find(item => item.section === entry.target);
+                activeItem?.link.classList.add("active");
+            }
+            });
+        },
+        { threshold: 0.6 }
+    );
+
+    sections.forEach(item => observer.observe(item.section));
+
 
     // CONTACT FORM
     const form = document.getElementById("contactForm");

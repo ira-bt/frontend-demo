@@ -8,24 +8,26 @@
     <title>Login</title>
 </head>
 <body>
+    <main class="container">
+        <div class="centered-container">
+            <h2 class="auth-title">Login</h2>
 
-<div class="centered-container">
-    <h2 class="auth-title">Login</h2>
+            <form id="loginForm" class="auth-form">
+                <input type="email" id="email" placeholder="Business Email">
+                <span class="error-text" id="emailError"></span>
 
-    <form id="loginForm" class="auth-form">
-        <input type="email" id="email" placeholder="Business Email">
-        <span class="error-text" id="emailError"></span>
+                <input type="password" id="password" placeholder="Password">
+                <span class="error-text" id="passwordError"></span>
 
-        <input type="password" id="password" placeholder="Password">
-        <span class="error-text" id="passwordError"></span>
-
-        <button type="submit" id="loginBtn" class="btn-primary" disabled>Login</button>
-    </form>
-    <br>
-    <p>Not registered? <a href="register.html" class="auth-link">Register</a></p>
-</div>
-<script src="js/config.js"></script>
-<script src="js/validator.js"></script>
-<script src="js/login.js"></script>
+                <button type="submit" id="loginBtn" class="btn-primary" disabled>Login</button>
+            </form>
+            <br>
+            <p>Not registered? <a href="register.html" class="auth-link">Register</a></p>
+        </div>
+    </main>
+    
+    <script src="js/config.js"></script>
+    <script src="js/validator.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>

@@ -12,39 +12,73 @@
 
     <!-- NAVBAR -->
     <nav class="navbar">
-        <div class="navbar-logo">MyApp</div>
-        <ul class="navbar-links">
-            <li><a href="#" id="userEmail" class="navbar-user"></a></li>
-            <li><a href="#" id="homeLink">Home</a></li>
-            <li><a href="#" id="contactLink">Contact Us</a></li>
-            <li><a href="#" id="logoutLink">Logout</a></li>
-        </ul>
+        <div class="container navbar-inner">
+            <div class="navbar-logo">Portfolio</div>
+
+            <button class="nav-toggle" id="navToggle">☰</button>
+
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="#" id="userEmail" class="navbar-user"></a></li>
+                <li><a href="#homeSection" id="homeLink">Home</a></li>
+                <li><a href="#contactSection" id="contactLink">Contact Us</a></li>
+                <li><a href="./login.html" id="logoutLink">Logout</a></li>
+            </ul>
+        </div>
+        
     </nav>
 
-    <!-- HOME SECTION -->
-    <section id="homeSection" class="app-section">
-        <h1>Welcome to Dashboard</h1>
-        <p>You are successfully logged in.</p>
-    </section>
+    <main class="container">
+        <section id="heroSection" class="app-section hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                <h1>Hi, I'm Ira!</h1>
+                <p class="hero-subtitle">
+                    Frontend Developer | JavaScript Enthusiast
+                </p>
+                <p class="hero-desc">
+                    I build clean, responsive, and user-focused web applications
+                    using HTML, CSS, and Vanilla JavaScript.
+                </p>
+            </div>
+        </section>
 
-    <!-- CONTACT US SECTION -->
-    <section id="contactSection" class="app-section">
-        <h2>Contact Us</h2>
 
-        <form id="contactForm">
-            <input type="text" id="contactName" placeholder="Your Name">
-            <span class="error" id="nameError"></span>
 
-            <input type="email" id="contactEmail" placeholder="Your Email">
-            <span class="error" id="emailError"></span>
 
-            <textarea id="message" placeholder="Your Message"></textarea>
-            <span class="error" id="messageError"></span>
 
-            <button type="submit" id="contactBtn">Send</button>
-        </form>
-    </section>
+        <!-- HOME SECTION -->
+        <!-- <section id="homeSection" class="app-section">
+            <h1>Welcome to Dashboard</h1>
+            <p>You are successfully logged in.</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus similique repudiandae velit ducimus? Sunt, sint, est molestiae dolorum perferendis, deserunt similique nisi nihil impedit distinctio quod ipsum nostrum exercitationem eaque.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum esse eum officiis natus incidunt accusantium dicta fuga rerum fugit? Soluta nihil ducimus facilis, eos optio libero obcaecati ab beatae necessitatibus?</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, hic aperiam dolorum exercitationem totam dignissimos consectetur molestiae quae quos doloribus veniam repudiandae minima quidem eveniet voluptatem repellat dicta quo repellendus.</p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet fuga, delectus nisi unde iusto quo culpa quia quam ducimus temporibus nobis sit velit, aspernatur accusantium? Voluptatibus doloremque nam vero possimus.
+            </p>
+        </section> -->
 
+        <!-- CONTACT US SECTION -->
+        <section id="contactSection" class="app-section">
+            <h2>Contact Us</h2>
+
+            <form id="contactForm" class="contact-form">
+                <input type="text" id="contactName" placeholder="Your Name">
+                <span class="error" id="nameError"></span>
+
+                <input type="email" id="contactEmail" placeholder="Your Email">
+                <span class="error" id="emailError"></span>
+
+                <textarea id="message" placeholder="Your Message"></textarea>
+                <span class="error" id="messageError"></span>
+
+                <button type="submit" id="contactBtn">Send</button>
+            </form>
+        </section>
+
+    </main>
+    
+    
     <script src="js/config.js"></script>
     <script src="js/validator.js"></script>
     <script src="js/home.js"></script>
