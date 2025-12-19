@@ -3,35 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="StyleSheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/auth.css">
     <title>Registration Page</title>
 </head>
 <body>
-    <div class="container">
-        <h2>Register</h2>
-        <form id="registerForm">
+    <div class="centered-container">
+        <h2 class="auth-title">Register</h2>
+        <form class="auth-form" id="registerForm">
             <input type="text" id="fullName" placeholder="Full Name" >
-            <span class="error" id="nameError"></span>
+            <span class="error-text" id="nameError"></span>
 
             <input type="email" id="email" placeholder="Business Email" >
-            <span class="error" id="emailError"></span>
+            <span class="error-text" id="emailError"></span>
 
             <input type="password" id="password" placeholder="Password" >
-            <span class="error" id="passwordError"></span>
+            <span class="error-text" id="passwordError"></span>
 
             <input type="password" id="confirmPassword" placeholder="ReEnter Password" >
-            <span class="error" id="confirmError"></span>
+            <span class="error-text" id="confirmError"></span>
 
-            <div class="checkbox">
+            <div class="auth-checkbox">
                 <input type="checkbox" id="terms">
-                <label for="terms">I agree to <a href="terms.txt">Terms & conditions</a></label>
+                <label for="terms">
+                    <span class="custom-checkbox"></span>
+                    I agree to <a href="terms.txt" class="auth-link">Terms & conditions</a>
+                </label>
             </div>
             
 
-            <button type="submit" id="registerBtn" disabled>Register</button>
+            <button type="submit" class="btn-primary" id="registerBtn" disabled>Register</button>
         </form>
         <br>
-        <p>Already Registered? <a href="login.html">login</a></p>
+        <p>Already Registered? <a href="login.html" class="auth-link">login</a></p>
     </div>
 <script src="js/config.js"></script>
 <script src="js/validator.js"></script>

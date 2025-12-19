@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/home.css">
+
 </head>
 <body>
 
     <!-- NAVBAR -->
     <nav class="navbar">
-        <div class="logo">MyApp</div>
-        <ul class="nav-links">
-            <li><a href="#" id="userEmail"></a></li>
+        <div class="navbar-logo">MyApp</div>
+        <ul class="navbar-links">
+            <li><a href="#" id="userEmail" class="navbar-user"></a></li>
             <li><a href="#" id="homeLink">Home</a></li>
             <li><a href="#" id="contactLink">Contact Us</a></li>
             <li><a href="#" id="logoutLink">Logout</a></li>
@@ -20,13 +22,13 @@
     </nav>
 
     <!-- HOME SECTION -->
-    <section id="homeSection" class="section">
+    <section id="homeSection" class="app-section">
         <h1>Welcome to Dashboard</h1>
         <p>You are successfully logged in.</p>
     </section>
 
     <!-- CONTACT US SECTION -->
-    <section id="contactSection" class="section hidden">
+    <section id="contactSection" class="app-section">
         <h2>Contact Us</h2>
 
         <form id="contactForm">
