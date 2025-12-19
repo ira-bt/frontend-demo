@@ -12,8 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // VALIDATION
 
     function validateEmail() {
-        const regex = /^[a-zA-Z0-9._%+-]+@(?!gmail|yahoo|hotmail)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        const isValid = regex.test(email.value);
+        const isValid = Validators.validateEmail(email.value);
 
         emailError.textContent = isValid ? "" : "Enter registered business email";
         email.classList.toggle("invalid", !isValid);
@@ -30,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function toggleLoginButton()
     {
-        const isEmailOk = /^[a-zA-Z0-9._%+-]+@(?!gmail|yahoo|hotmail)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email.value);
+        const isEmailOk = Validators.validateEmail(email.value);
         const isPassOk = password.value.length >= 8;
         loginBtn.disabled = !(isEmailOk&&isPassOk);
     }

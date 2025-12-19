@@ -97,6 +97,9 @@ button:not(:disabled){
     color: black;
 }
 
+#userEmail{
+    color: rgb(226, 236, 199);
+}
 .section {
     padding: 40px;
     max-width: 800px;
