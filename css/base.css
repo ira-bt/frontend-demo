@@ -1,0 +1,130 @@
+/* =========================
+   BASE / DESIGN SYSTEM
+========================= */
+
+:root {
+  --color-primary: #7c3aed;
+  --color-secondary: #a78bfa;
+  --color-bg: #f5f3ff;
+  --color-surface: #ffffff;
+  --color-text: #0f172a;
+  --color-muted: #64748b;
+  --color-error: #dc2626;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+/* =========================
+   FORM ELEMENTS
+========================= */
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #d8d5f0;
+  outline: none;
+  transition: border 0.25s, box-shadow 0.25s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn-primary {
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #6d28d9;
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  background: #ddd;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* =========================
+   UTILITY
+========================= */
+
+.error-text {
+  color: var(--color-error);
+  font-size: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
+.centered-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 70px auto;
+  background: var(--color-surface);
+  padding: 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 480px) {
+  .centered-container {
+    margin: 40px 16px;
+    padding: 24px;
+  }
+}
+
+
+/* ===============================
+   Reusable Auth / Inline Links
+================================ */
+.auth-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}

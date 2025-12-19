@@ -1,0 +1,98 @@
+/*css for login register both*/
+/* =========================
+   AUTH PAGES (LOGIN / REGISTER)
+========================= */
+
+.auth-title {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.auth-footer a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+input.valid { border-color: green; }
+input.invalid { border-color: red; }
+
+/* ===== Custom Checkbox ===== */
+.auth-checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.auth-checkbox input[type="checkbox"] {
+  display: none; /* hide native checkbox */
+}
+
+.auth-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+/* Checkbox box */
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+/* Checkmark */
+.custom-checkbox::after {
+  content: "✓";
+  font-size: 12px;
+  color: white;
+  display: none;
+}
+
+/* Checked state */
+.auth-checkbox input:checked + label .custom-checkbox {
+  background: var(--color-primary);
+}
+
+.auth-checkbox input:checked + label .custom-checkbox::after {
+  display: block;
+}
+
+/* Link styling
+.auth-checkbox a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.auth-checkbox a:hover {
+  text-decoration: underline;
+} */
