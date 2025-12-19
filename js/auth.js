@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //Validation Logic
 
     function validateName() {
-        const isValid = fullName.value.trim().length >= 2;
+        const isValid = Validators.validateName(fullName.value);
         nameError.textContent = isValid ? "" : "Enter Full Name (min 2 chars)";
         fullName.classList.toggle("invalid", !isValid);
         fullName.classList.toggle("valid", isValid);
@@ -24,8 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function validateEmail() {
-        const regex = /^[a-zA-Z0-9._%+-]+@(?!gmail|yahoo|hotmail)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        const isValid = regex.test(email.value);
+        const isValid = Validators.validateEmail(email.value);
         emailError.textContent = isValid ? "" : "Only Business Email is Allowed!";
         email.classList.toggle("invalid", !isValid);
         email.classList.toggle("valid", isValid);
@@ -33,16 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function validatePassword() {
-        
-        const val = password.value;
-
-        const rules = {
-            length: val.length >= 8,
-            upper: /[A-Z]/.test(val),
-            lower: /[a-z]/.test(val),
-            number: /[0-9]/.test(val),
-            special: /[@$!%*?&]/.test(val)
-        };
+        const rules = Validators.validatePassword(password.value);
 
         let errors = [];
 

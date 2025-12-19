@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const contactSection = document.getElementById("contactSection");
 
     const contactBtn = document.getElementById("contactBtn");
+    const userEmail = document.getElementById("userEmail");
 
+    userEmail.textContent = user;
     homeLink.addEventListener("click", () => {
         homeSection.classList.remove("hidden");
         contactSection.classList.add("hidden");
@@ -44,17 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
     function validateContactForm() {
         let valid = true;
 
-        if (nameInput.value.trim().length < 2) {
+        if (!Validators.validateName(nameInput.value)) {
             nameError.textContent = "Enter valid name";
             valid = false;
         } else nameError.textContent = "";
 
-        if (!emailInput.value.includes("@")) {
+        if (!Validators.validateEmail(emailInput.value)) {
             emailError.textContent = "Enter valid email";
             valid = false;
         } else emailError.textContent = "";
 
-        if (messageInput.value.trim().length < 5) {
+        if (Validators.validateMessage(messageInput.value)) {
             messageError.textContent = "Message too short";
             valid = false;
         } else messageError.textContent = "";
