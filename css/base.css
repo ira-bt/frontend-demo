@@ -3,12 +3,19 @@
 ========================= */
 
 :root {
-  --color-primary: #7c3aed;
+  /* --color-primary: #7c3aed;
   --color-secondary: #a78bfa;
   --color-bg: #f5f3ff;
   --color-surface: #ffffff;
   --color-text: #0f172a;
   --color-muted: #64748b;
+  --color-error: #dc2626; */
+  --color-primary: #10b981;   /* emerald */
+  --color-secondary: #34d399; /* soft emerald */
+  --color-bg: #f0fdf4;        /* mint white */
+  --color-surface: #ffffff;
+  --color-text: #0f172a;      /* slate-900 */
+  --color-muted: #475569;     /* slate-600 */
   --color-error: #dc2626;
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -21,11 +28,38 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 body {
+  min-height: 320px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--color-bg);
+  /* background: linear-gradient(
+    180deg,
+    var(--color-bg) 0%,
+    #ffffff 100%
+  ); */
+  background-image:
+    linear-gradient(
+      rgba(236, 253, 245, 0.92),
+      rgba(236, 253, 245, 0.92)
+    ),
+    url("../assets/images/bg-tech.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--color-text);
   line-height: 1.5;
+}
+
+.container
+{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* =========================
@@ -94,26 +128,14 @@ textarea {
 }
 
 .centered-container {
-  width: 100%;
+  width: calc(100% - 32px);
   max-width: 400px;
-  margin: 70px auto;
+  margin: 60px auto;
   background: var(--color-surface);
-  padding: 32px;
+  padding: 28px;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-soft);
 }
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 480px) {
-  .centered-container {
-    margin: 40px 16px;
-    padding: 24px;
-  }
-}
-
 
 /* ===============================
    Reusable Auth / Inline Links
@@ -128,3 +150,21 @@ textarea {
 .auth-link:hover {
   text-decoration: underline;
 }
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 480px) {
+  .centered-container {
+    margin: 40px 16px;
+    padding: 24px;
+  }
+}
+@media (max-width: 360px) {
+  .centered-container {
+    padding: 20px;
+  }
+}
+
