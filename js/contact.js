@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const successMessage = document.getElementById("successMessage")
 
   function validateName() {
-    const isValid = contactName.value.trim().length >= 2
+    const isValid = Validators.validateName(contactName.value)
     nameError.textContent = isValid ? "" : "Name must be at least 2 characters"
     return isValid
   }
@@ -32,15 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function validateMessage() {
-    const isValid = message.value.trim().length >= 10
+    const isValid = Validators.validateMessage(message.value)
     messageError.textContent = isValid ? "" : "Message must be at least 10 characters"
     return isValid
   }
 
-  contactName.addEventListener("blur", validateName)
-  contactEmail.addEventListener("blur", validateEmail)
-  subject.addEventListener("blur", validateSubject)
-  message.addEventListener("blur", validateMessage)
+  contactName.addEventListener("input", validateName)
+  contactEmail.addEventListener("input", validateEmail)
+  subject.addEventListener("input", validateSubject)
+  message.addEventListener("input", validateMessage)
 
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault()
