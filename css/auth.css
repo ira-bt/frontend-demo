@@ -1,118 +1,227 @@
-/*css for login register both*/
 /* =========================
    AUTH PAGES (LOGIN / REGISTER)
 ========================= */
 
-/* Adding auth logo styling */
+/* Added centered container styling for auth pages */
+.centered-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  background: var(--color-bg);
+  max-width: 460px;
+  margin: 0 auto;
+}
+
 .auth-logo {
   text-align: center;
-  font-size: 28px;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: 8px;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.02em;
 }
 
 .auth-subtitle {
   text-align: center;
-  color: var(--color-muted);
-  font-size: 14px;
-  margin-bottom: 24px;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-2xl);
+  line-height: 1.5;
 }
 
 .auth-title {
   text-align: center;
-  font-size: 22px;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-2xl);
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
 }
 
+/* Complete auth form styling with proper spacing and colors */
 .auth-form {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--spacing-sm);
+  background: var(--color-surface);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
 }
 
-.auth-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: var(--color-muted);
+/* Auth form inputs with consistent styling */
+.auth-form input[type="email"],
+.auth-form input[type="password"],
+.auth-form input[type="text"] {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  transition: all var(--transition-base);
 }
 
-.auth-footer {
-  text-align: center;
-  margin-top: 14px;
-  font-size: 14px;
+.auth-form input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.1);
 }
 
-.auth-footer a {
-  color: var(--color-primary);
-  text-decoration: none;
+.auth-form input.valid {
+  border-color: var(--color-success);
+}
+
+.auth-form input.invalid {
+  border-color: var(--color-error);
+}
+
+/* Error text styling */
+.error-text {
+  color: var(--color-error);
+  font-size: 0.8125rem;
+  margin-top: calc(var(--spacing-xs) * -1);
+  display: block;
   font-weight: 500;
+  min-height: 1.2em;
 }
 
-input.valid {
-  border-color: green;
-}
-input.invalid {
-  border-color: red;
-}
-
-/* ===== Custom Checkbox ===== */
+/* Auth checkbox with custom styling */
 .auth-checkbox {
   display: flex;
-  align-items: center;
-  margin-top: 12px;
+  align-items: flex-start;
+  margin-top: var(--spacing-xs);
+  gap: var(--spacing-sm);
 }
 
 .auth-checkbox input[type="checkbox"] {
-  display: none; /* hide native checkbox */
+  display: none;
 }
 
 .auth-checkbox label {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
   cursor: pointer;
-  font-size: 14px;
-  color: var(--color-text);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
 }
 
-/* Checkbox box */
 .custom-checkbox {
-  width: 18px;
-  height: 18px;
-  border: 2px solid var(--color-primary);
-  border-radius: 4px;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, border-color 0.2s;
+  transition: all var(--transition-base);
+  background: var(--color-bg);
+  margin-top: 2px;
 }
 
-/* Checkmark */
 .custom-checkbox::after {
   content: "✓";
-  font-size: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
   color: white;
   display: none;
 }
-
-/* Checked state */
 .auth-checkbox input:checked + label .custom-checkbox {
-  background: var(--color-primary);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .auth-checkbox input:checked + label .custom-checkbox::after {
   display: block;
 }
 
-/* Link styling
-.auth-checkbox a {
-  color: var(--color-primary);
+/* Auth link styling for terms and login/register links */
+.auth-link {
+  color: var(--color-accent);
   text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition-base);
 }
 
-.auth-checkbox a:hover {
+.auth-link:hover {
+  color: var(--color-primary);
   text-decoration: underline;
-} */
+}
+
+/* Text below form with proper spacing */
+.centered-container > p {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+}
+
+/* Button styling specific to auth forms */
+.auth-form .btn-primary {
+  margin-top: var(--spacing-md);
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  width: 100%;
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.auth-form .btn-primary:hover:not(:disabled) {
+  background: #13886f;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.auth-form .btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.auth-footer a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition-base);
+}
+
+.auth-footer a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 480px) {
+  .centered-container {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .auth-form {
+    padding: var(--spacing-xl);
+  }
+
+  .auth-title {
+    font-size: 1.5rem;
+  }
+}
