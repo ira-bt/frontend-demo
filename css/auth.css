@@ -3,6 +3,22 @@
    AUTH PAGES (LOGIN / REGISTER)
 ========================= */
 
+/* Adding auth logo styling */
+.auth-logo {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
 .auth-title {
   text-align: center;
   font-size: 22px;
@@ -35,8 +51,12 @@
   font-weight: 500;
 }
 
-input.valid { border-color: green; }
-input.invalid { border-color: red; }
+input.valid {
+  border-color: green;
+}
+input.invalid {
+  border-color: red;
+}
 
 /* ===== Custom Checkbox ===== */
 .auth-checkbox {
