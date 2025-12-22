@@ -21,6 +21,24 @@
                 <li><a href="home.html" class="nav-link">Home</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li>
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                </li>
                 <li><a href="#" id="logoutLink" class="nav-link logout-link">Logout</a></li>
             </ul>
         </div>
@@ -60,7 +78,7 @@
                                 <div class="method-icon">📱</div>
                                 <div class="method-details">
                                     <h3>Phone</h3>
-                                    <a href="tel:+1234567890">+1 (234) 567-890</a>
+                                    <a href="phone:+91 9999999999">+91 99999 99999</a>
                                 </div>
                             </div>
 
@@ -68,17 +86,11 @@
                                 <div class="method-icon">📍</div>
                                 <div class="method-details">
                                     <h3>Location</h3>
-                                    <p>San Francisco, CA</p>
+                                    <a href="https://www.google.com/maps/place/Ahmedabad,+Gujarat/@23.0202434,72.5797426,11z/data=!3m1!4b1!4m6!3m5!1s0x395e848aba5bd449:0x4fcedd11614f6516!8m2!3d23.022505!4d72.5713621!16zL20vMDFkODhj?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D">Ahmedabad, Gujarat</a>
                                 </div>
                             </div>
 
-                            <div class="contact-method">
-                                <div class="method-icon">💼</div>
-                                <div class="method-details">
-                                    <h3>LinkedIn</h3>
-                                    <a href="https://linkedin.com/in/yourprofile" target="_blank">Connect with me</a>
-                                </div>
-                            </div>
+                            
                         </div>
 
                         <div class="social-links">
@@ -156,5 +168,6 @@
     <script src="js/validator.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/contact.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html>
