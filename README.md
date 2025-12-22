@@ -1,104 +1,228 @@
-# Professional Portfolio Website
+# Frontend Demo Project – Authentication & Theme Toggle
 
-A fully responsive, professional portfolio website built with pure HTML, CSS, and JavaScript.
+A clean, modern frontend project built using **pure HTML, CSS, and Vanilla JavaScript**, demonstrating **authentication flow**, **persistent theme toggling**, and **scalable CSS architecture** without using any frameworks.
+
+This project is designed to be **beginner-friendly yet industry-aligned**, focusing on how things work **behind the scenes**.
+
+---
 
 ## Features
 
-### Pages
-- **Home** (`index.html`) - Extended landing page with hero, features, stats, testimonials, and CTA
-- **About** (`about.html`) - Skills with animated progress bars, education timeline, and projects showcase
-- **Contact** (`contact.html`) - Contact form with validation and FAQ section
-- **Logout** - Links to login.html
+- Register & Login flow using **Local Storage**
+- Light / Dark theme toggle with persistence
+- Theme preference saved across pages
+- Modular CSS structure (base + page-specific)
+- Form validation (including terms & conditions)
+- Responsive and clean UI
+- Easy to extend for backend integration
 
-### Key Features
+---
 
-#### Navigation
-- Sticky navigation bar
-- Responsive hamburger menu for mobile devices
-- Active page indicator
-- Smooth transitions
+## Theme Toggle Implementation
 
-#### Home Page
-- Hero section with call-to-action buttons
-- Features grid showcasing services
-- Animated statistics counter (triggered on scroll)
-- Testimonial carousel with auto-play
-- Call-to-action section
+- All theme colors are defined using CSS variables in `base.css`
+- Default (light) theme is defined inside `:root`
+- Dark theme overrides are applied using the `data-theme="dark"` attribute
+- JavaScript toggles the theme by updating the attribute on the `<html>` element
+- Selected theme is stored in `localStorage` and applied on page load
 
-#### About Page
-- Personal introduction with image
-- Skill bars with animated progress (triggered on scroll)
-- Education timeline with professional styling
-- Featured projects grid with hover effects
+---
 
-#### Contact Page
-- Fully validated contact form
-- Real-time form validation
-- Success message on submission
-- Contact information display
-- FAQ section
+## Authentication Flow
 
-### Technical Details
+### Register
 
-**Technologies Used:**
-- Pure HTML5 (semantic markup)
-- CSS3 (custom properties, flexbox, grid, animations)
-- Vanilla JavaScript (no frameworks or libraries)
+- User fills in the registration form
+- Business email validation is applied
+- Terms & conditions checkbox must be checked
+- User details are saved in google sheets
 
-**CSS Features:**
-- CSS Custom Properties for theming
-- Flexbox and Grid layouts
-- Responsive design (mobile-first approach)
-- Smooth transitions and animations
-- Media queries for all screen sizes
+### Login
 
-**JavaScript Features:**
-- Mobile navigation toggle
-- Animated counter with Intersection Observer
-- Testimonial carousel with auto-play
-- Smooth scrolling
-- Form validation
-- Skill bar animations on scroll
+- User enters email and password
+- Credentials are validated against stored data
+- Successful login redirects to the Home page and login status gets stored in session storage
+- Invalid credentials show an error message
 
-### File Structure
-```
-├── index.html           # Home page
-├── about.html           # About page
-├── contact.html         # Contact page
-├── css/
-│   ├── base.css        # Base styles and CSS variables
-│   └── portfolio.css   # Main portfolio styles
-├── js/
-│   ├── portfolio.js    # Main portfolio functionality
-│   └── contact.js      # Contact form validation
-└── assets/
-    └── images/         # Image assets
-```
+---
 
-### Responsive Breakpoints
-- Desktop: > 968px
-- Tablet: 768px - 968px
-- Mobile: < 768px
-- Small Mobile: < 480px
+## JavaScript Overview
 
-### Color Scheme
-- Primary: Emerald Green (#10b981)
-- Secondary: Teal (#14b8a6)
-- Background: Light gray (#f9fafb)
-- Text: Dark gray (#1f2937)
-- Muted: Medium gray (#6b7280)
+### auth.js
 
-## Browser Support
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- IE11+ (with some limitations)
+- Handles user registration
+- Validates login credentials
+- Manages redirects after authentication
 
-## Performance Features
-- Intersection Observer for efficient scroll animations
-- CSS-only animations where possible
-- Optimized images
-- Minimal JavaScript for better performance
+### theme.js
 
-## Customization
-- Edit CSS variables in `css/base.css` to change colors and fonts
-- Modify content directly in HTML files
-- Adjust animations and timings in `js/portfolio.js`
+- Reads theme preference from `localStorage`
+- Applies theme on initial page load
+- Toggles between light and dark themes
+- Ensures theme consistency across all pages
+
+---
+
+## CSS Architecture
+
+- `base.css` contains global styles and theme variables
+- Page-specific CSS files handle individual page styling
+- CSS variables ensure easy theme switching and scalability
+
+---
+
+## Tech Stack
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+
+## Apps script code:
+```javascript
+const USER_HEADERS = [
+  "Full Name",
+  "Email",
+  "Password Hash",
+  "Created At"
+];
+
+const CONTACT_HEADERS = [
+  "Name",
+  "Email",
+  "Subject",
+  "Message",
+  "Created At"
+];
+
+function emailExists(sheet,email)
+{
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) {
+    return false;
+  }
+   const emails = sheet.getRange(2, 2, sheet.getLastRow() - 1, 1)
+                      .getValues()
+                      .flat()
+                      .map(e => e.toString().toLowerCase().trim());
+
+  return emails.includes(email);
+}
+
+function getOrCreateSheet(ss, sheetName, headers) {
+  let sheet = ss.getSheetByName(sheetName);
+
+  // 1️⃣ Sheet does not exist → create it
+  if (!sheet) {
+    sheet = ss.insertSheet(sheetName);
+    sheet.appendRow(headers);
+    return sheet;
+  }
+
+  // 2️⃣ Sheet exists → validate headers
+  const firstRow = sheet.getRange(1, 1, 1, headers.length).getValues()[0];
+
+  const headersMissing = headers.some((header, index) => {
+    return firstRow[index] !== header;
+  });
+
+  if (headersMissing) {
+    // Insert headers safely without deleting data
+    sheet.insertRowBefore(1);
+    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+  }
+
+  return sheet;
+}
+
+
+function doPost(e) {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(5000);
+
+  try {
+    const data = JSON.parse(e.postData.contents);
+
+    const ss = SpreadsheetApp.openById(
+      "13gYiWckcCLD2H7_Kdl_ymyJBsiHI6Ov83e0R0NSWmZY"
+    );
+
+    
+    
+    //registration
+
+    if(!data.action)
+    {
+      const userSheet = getOrCreateSheet(ss, "Users", USER_HEADERS);
+      
+      const email = data.email.toLowerCase().trim();
+
+      if(emailExists(userSheet,email))
+      {
+        return ContentService
+          .createTextOutput("EMAIL_ALREADY_EXISTS")
+          .setMimeType(ContentService.MimeType.TEXT);
+      }
+
+      userSheet.appendRow([
+        data.fullName,
+        email,
+        data.passwordHash,
+        new Date(),
+      ]);
+
+      return ContentService
+        .createTextOutput("SUCCESS")
+        .setMimeType(ContentService.MimeType.TEXT);
+    }
+
+    //login
+
+    if(data.action === "LOGIN")
+    {
+      const sheet = ss.getSheetByName("Users");
+      if (!sheet) {
+        throw new Error("Sheet 'Users' not found");
+      }
+      const rows = sheet.getDataRange().getValues();
+      for(let i=1;i<rows.length;i++)
+      {
+        const storedEmail = rows[i][1];
+        const storedHash  = rows[i][2];
+
+        if(storedEmail === data.email && storedHash === data.passwordHash)
+        {
+          return ContentService.createTextOutput("LOGIN_SUCCESS");
+        }
+      }
+
+      return ContentService.createTextOutput("INVALID_CREDENTIALS");
+
+    }
+
+    //contact us
+    if(data.action === "CONTACT")
+    {
+      const contactSheet = getOrCreateSheet(ss, "ContactUs", CONTACT_HEADERS);
+     
+      contactSheet.appendRow([
+        data.name,
+        data.email,
+        data.subject,
+        data.message,
+
+        new Date()
+      ]);
+
+      return ContentService.createTextOutput("CONTACT_SUCCESS");
+    }
+    return ContentService.createTextOutput("UNKNOWN_ACTION");
+
+  } catch (err) {
+    return ContentService
+      .createTextOutput("ERROR: " + err.message)
+      .setMimeType(ContentService.MimeType.TEXT);
+  }
+  finally{
+      lock.releaseLock();
+  }
+}
