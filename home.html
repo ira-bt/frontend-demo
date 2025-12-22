@@ -3,84 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Portfolio - Home</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/home.css">
-
 </head>
 <body>
-
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container navbar-inner">
             <div class="navbar-logo">Portfolio</div>
 
-            <button class="nav-toggle" id="navToggle">☰</button>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
 
             <ul class="navbar-links" id="navLinks">
-                <li><a href="#" id="userEmail" class="navbar-user"></a></li>
-                <li><a href="#homeSection" id="homeLink">Home</a></li>
-                <li><a href="#contactSection" id="contactLink">Contact Us</a></li>
-                <li><a href="./login.html" id="logoutLink">Logout</a></li>
+                <li><a href="home.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="#" id="logoutLink" class="nav-link logout-link">Logout</a></li>
             </ul>
         </div>
-        
     </nav>
 
-    <main class="container">
-        <section id="heroSection" class="app-section hero-section">
-            <div class="hero-content">
-                <div class="hero-text">
-                <h1>Hi, I'm Ira!</h1>
-                <p class="hero-subtitle">
-                    Frontend Developer | JavaScript Enthusiast
-                </p>
-                <p class="hero-desc">
-                    I build clean, responsive, and user-focused web applications
-                    using HTML, CSS, and Vanilla JavaScript.
-                </p>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="hero-bg-overlay"></div>
+            <div class="container hero-content">
+                <div class="hero-text-container">
+                    <div class="hero-badge">Full-Stack Developer</div>
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="gradient-text">Ira</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Crafting Beautiful & Functional Web Experiences
+                    </p>
+                    <p class="hero-description">
+                        I'm a passionate web developer specializing in building exceptional digital experiences. 
+                        From responsive designs to seamless user interactions, I bring ideas to life with clean code and creative solutions.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3+</div>
+                            <div class="stat-label">Years</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Satisfaction</div>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="about.html" class="btn btn-primary">View My Work</a>
+                        <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <div class="hero-image-wrapper">
+                        <img src="assets/images/hero1.png" alt="Developer workspace" class="hero-image">
+                        <div class="floating-card card-1">
+                            <div class="card-icon">💻</div>
+                            <div class="card-text">Clean Code</div>
+                        </div>
+                        <div class="floating-card card-2">
+                            <div class="card-icon">🎨</div>
+                            <div class="card-text">Beautiful UI</div>
+                        </div>
+                        <div class="floating-card card-3">
+                            <div class="card-icon">⚡</div>
+                            <div class="card-text">Fast Performance</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-
-
-
-
-        <!-- HOME SECTION -->
-        <!-- <section id="homeSection" class="app-section">
-            <h1>Welcome to Dashboard</h1>
-            <p>You are successfully logged in.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus similique repudiandae velit ducimus? Sunt, sint, est molestiae dolorum perferendis, deserunt similique nisi nihil impedit distinctio quod ipsum nostrum exercitationem eaque.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum esse eum officiis natus incidunt accusantium dicta fuga rerum fugit? Soluta nihil ducimus facilis, eos optio libero obcaecati ab beatae necessitatibus?</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, hic aperiam dolorum exercitationem totam dignissimos consectetur molestiae quae quos doloribus veniam repudiandae minima quidem eveniet voluptatem repellat dicta quo repellendus.</p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet fuga, delectus nisi unde iusto quo culpa quia quam ducimus temporibus nobis sit velit, aspernatur accusantium? Voluptatibus doloremque nam vero possimus.
-            </p>
-        </section> -->
-
-        <!-- CONTACT US SECTION -->
-        <section id="contactSection" class="app-section">
-            <h2>Contact Us</h2>
-
-            <form id="contactForm" class="contact-form">
-                <input type="text" id="contactName" placeholder="Your Name">
-                <span class="error" id="nameError"></span>
-
-                <input type="email" id="contactEmail" placeholder="Your Email">
-                <span class="error" id="emailError"></span>
-
-                <textarea id="message" placeholder="Your Message"></textarea>
-                <span class="error" id="messageError"></span>
-
-                <button type="submit" id="contactBtn">Send</button>
-            </form>
+        <!-- SPECIALTIES SECTION -->
+        <section class="specialties-section">
+            <div class="container">
+                <h2 class="section-title">What I Do Best</h2>
+                <div class="specialties-grid">
+                    <div class="specialty-card">
+                        <div class="specialty-icon">🎯</div>
+                        <h3>Frontend Development</h3>
+                        <p>Building responsive, interactive interfaces with modern HTML, CSS, and JavaScript</p>
+                    </div>
+                    <div class="specialty-card">
+                        <div class="specialty-icon">⚙️</div>
+                        <h3>Backend Integration</h3>
+                        <p>Creating robust APIs and seamless data flow for dynamic applications</p>
+                    </div>
+                    <div class="specialty-card">
+                        <div class="specialty-icon">📱</div>
+                        <h3>Responsive Design</h3>
+                        <p>Ensuring perfect experiences across all devices and screen sizes</p>
+                    </div>
+                    <div class="specialty-card">
+                        <div class="specialty-icon">🚀</div>
+                        <h3>Performance</h3>
+                        <p>Optimizing applications for lightning-fast load times and smooth interactions</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <!-- TECH SHOWCASE -->
+        <section class="tech-showcase">
+            <div class="container">
+                <h2 class="section-title">Technologies I Love</h2>
+                <div class="tech-carousel">
+                    <div class="tech-track">
+                        <div class="tech-item">HTML5</div>
+                        <div class="tech-item">CSS3</div>
+                        <div class="tech-item">JavaScript</div>
+                        <div class="tech-item">React</div>
+                        <div class="tech-item">Node.js</div>
+                        <div class="tech-item">Git</div>
+                        <div class="tech-item">Responsive Design</div>
+                        <div class="tech-item">APIs</div>
+                        <!-- Duplicate for seamless loop -->
+                        <div class="tech-item">HTML5</div>
+                        <div class="tech-item">CSS3</div>
+                        <div class="tech-item">JavaScript</div>
+                        <div class="tech-item">React</div>
+                        <div class="tech-item">Node.js</div>
+                        <div class="tech-item">Git</div>
+                        <div class="tech-item">Responsive Design</div>
+                        <div class="tech-item">APIs</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Let's Build Something Amazing Together</h2>
+                    <p>Ready to bring your project to life? I'm always excited to collaborate on new ideas.</p>
+                    <a href="contact.html" class="btn btn-primary">Start a Conversation</a>
+                </div>
+            </div>
+        </section>
     </main>
-    
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ira's Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
     
     <script src="js/config.js"></script>
-    <script src="js/validator.js"></script>
-    <script src="js/home.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 </html>
