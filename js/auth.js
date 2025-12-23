@@ -225,16 +225,55 @@ document.addEventListener("DOMContentLoaded", () => {
         loginBtn.disabled = true
         loginBtn.textContent = "Signing In..."
 
-        // Simulate login - in production, this would be an API call
-        setTimeout(() => {
-          // Store user session
-          sessionStorage.setItem("isLoggedIn", "true")
-          sessionStorage.setItem("loggedInUser", email.value)
-          sessionStorage.setItem("userEmail", email.value)
+        try {
+            const passwordHash = await hashPassword(password.value);
 
-          // Redirect to home
-          window.location.href = "home.html"
-        }, 800)
+            const response = await fetch(
+                APP_CONFIG.API_BASE_URL,
+                {
+                    method: "POST",
+                    body: JSON.stringify({
+                        action: "LOGIN",
+                        email: email.value,
+                        passwordHash: passwordHash
+                    })
+                }
+            );
+
+            const text = await response.text();
+
+            if (text === "LOGIN_SUCCESS") { 
+                alert("Login successful!");
+
+                // session (basic)
+                // sessionStorage.setItem("loggedInUser", email.value);
+
+                // window.location.href = "home.html";
+                // Simulate login - in production, this would be an API call
+                setTimeout(() => {
+                // Store user session
+                sessionStorage.setItem("isLoggedIn", "true")
+                sessionStorage.setItem("loggedInUser", email.value)
+                sessionStorage.setItem("userEmail", email.value)
+
+                // Redirect to home
+                window.location.href = "home.html"
+                }, 800)
+            }
+            if(text==="INVALID_CREDENTIALS") {
+                alert("Invalid email or password");
+            }
+
+        } catch (err) {
+            console.error(err);
+            alert("Login failed. Try again.");
+            loginForm.reset();
+            loginBtn.disabled = false;
+            loginBtn.textContent = "Login";
+        }
+
+
+        
       }
     })
   }
