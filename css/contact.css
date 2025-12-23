@@ -307,7 +307,7 @@
    FOOTER
 ========================= */
 /* Updated footer to match other pages with consistent background */
-.footer {
+/* .footer {
   background: var(--color-surface);
   color: var(--color-text-secondary);
   text-align: center;
@@ -315,7 +315,7 @@
   font-size: 14px;
   border-top: 1px solid var(--color-border);
   transition: all var(--transition-smooth);
-}
+} */
 
 /* =========================
    RESPONSIVE DESIGN
